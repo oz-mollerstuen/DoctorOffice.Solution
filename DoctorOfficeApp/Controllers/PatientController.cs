@@ -34,7 +34,18 @@ namespace DoctorOffice.Controllers
             newDocPat.patient_id = dropInt;
             _db.DocPat.Add(newDocPat);
             _db.SaveChanges();
-            return Redirect("/");
+            return Redirect($"/doctor/{id}");
+        }
+
+        [HttpPost("/patient/delete/{id}/{doc}")]
+        public ActionResult Delete(int id, int doc)
+        {
+            List<DocPat> thisLinks = _db.DocPat.Where(dp => dp.patient_id == id && dp.doctor_id == doc).ToList();
+            foreach (DocPat dp in thisLinks) {
+                _db.DocPat.Remove(dp);
+            }
+            _db.SaveChanges();
+            return Redirect($"/doctor/{doc}");
         }
     }
 }

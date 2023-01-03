@@ -8,6 +8,9 @@
   <a href="/">
     <h3>View all doctors</h3>
   </a>
+  <form action="/doctor/delete/@Model.doctor_id" method="post">
+    <button type="submit" class="btn btn-danger">Fire @Model.name</button>
+  </form>
   <br>
 </div>
 <div class="text-center">
@@ -47,14 +50,34 @@
   </div>
   <hr>
   <h2>Patients:</h2>
-  @foreach (Patient pat in ViewBag.DocPatients)
-  {
-    <h3>@pat.name</h3>
-  }
+    @foreach (Patient pat in ViewBag.DocPatients)
+    {
+    <div class="mb-2">
+        <div class="card w-25 m-auto bg-light">
+          <div class="card-body">
+            <h1 class="card-title">
+              @pat.name
+            </h1>
+            <p class="card-text">Birthday: @pat.birthday</p>
+            <form action="/patient/delete/@pat.patient_id/@Model.doctor_id" method="post">
+              <button type="submit" class="btn btn-danger">X</button>
+            </form>
+          </div>
+        </div>
+    </div>
+    }
   <hr>
   <h2>Special Specialties:</h2>
-  @foreach (Specialty spec in ViewBag.DocSpecialty)
-  {
-    <h3>@spec.name</h3>
-  }
+  <ul class="list-group w-25 m-auto">
+    @foreach (Specialty spec in ViewBag.DocSpecialty)
+    {
+      <li class="list-group-item mb-3 bg-light">
+        @spec.name
+        <br>
+        <form action="/specialty/delete/@spec.specialty_id/@Model.doctor_id" method="post">
+          <button type="submit" class="btn btn-danger">X</button>
+        </form>
+      </li>
+    }
+  </ul>
 </div>

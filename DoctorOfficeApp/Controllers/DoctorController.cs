@@ -42,5 +42,22 @@ namespace DoctorOffice.Controllers
       _db.SaveChanges();
       return Redirect("/");
     }
+
+    [HttpPost("/doctor/delete/{id}")]
+    public ActionResult Delete(int id)
+    {
+        Doctor thisDoctor = _db.Doctors.FirstOrDefault(doc => doc.doctor_id == id);
+        List<DocSpec> thisSpecLinks = _db.DocSpec.Where(ds => ds.doctor_id == id).ToList();
+        foreach (DocSpec ds in thisSpecLinks) {
+            _db.DocSpec.Remove(ds);
+        }
+        List<DocPat> thisPatLinks = _db.DocPat.Where(dp => dp.doctor_id == id).ToList();
+        foreach (DocPat dp in thisPatLinks) {
+            _db.DocPat.Remove(dp);
+        }
+        _db.Doctors.Remove(thisDoctor);
+        _db.SaveChanges();
+        return Redirect("/");
+    }
   }
 }
