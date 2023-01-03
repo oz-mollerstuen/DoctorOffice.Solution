@@ -1,0 +1,60 @@
+@{
+  Layout = "_Layout";
+}
+@using DoctorOffice.Models
+
+<div class="text-center">
+  <h1>@Model.name</h1>
+  <a href="/">
+    <h3>View all doctors</h3>
+  </a>
+  <br>
+</div>
+<div class="text-center">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-4">
+      <form action="/patient/@Model.doctor_id/add" method="post">
+        <h5>Add A Patient</h5>
+        <label for="drop_name">Name</label><br>
+        <select name="drop_name" id="drop_name" required>
+          <option value="" disabled selected>Patient List</option>
+          @foreach (Patient pat in ViewBag.Patients)
+          {
+            <option value="@pat.patient_id">@pat.name</option>
+          }
+        </select>
+        <br><br>
+        <button type="submit" class="btn btn-info">Add</button>
+      </form>
+    </div>
+    <div class="col-4">
+      <form action="/specialty/@Model.doctor_id/add" method="post">
+        <h5>Add A Specialty</h5>
+        <label for="drop_name">Name</label><br>
+        <select name="drop_name" id="drop_name" required>
+          <option value="" disabled selected>Specialty List</option>
+          @foreach (Specialty spec in ViewBag.Specialty)
+          {
+            <option value="@spec.specialty_id">@spec.name</option>
+          }
+        </select>
+        <br><br>
+        <button type="submit" class="btn btn-info">Add</button>
+      </form>
+    </div>
+    <div class="col-2"></div>
+  </div>
+  <hr>
+  <h2>Patients:</h2>
+  @foreach (Patient pat in ViewBag.DocPatients)
+  {
+    <h3>@pat.name</h3>
+  }
+  <hr>
+  <h2>Special Specialties:</h2>
+  @foreach (Specialty spec in ViewBag.DocSpecialty)
+  {
+    <h3>@spec.name</h3>
+  }
+</div>

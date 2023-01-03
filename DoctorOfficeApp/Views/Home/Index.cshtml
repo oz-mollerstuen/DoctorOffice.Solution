@@ -1,5 +1,38 @@
 @{
   Layout = "_Layout";
 }
+@using DoctorOffice.Models
+<div class="text-center">
+<h1>Dr. Ted's Holistic Office</h1>
+<hr>
+<h2>Doctors:</h2>
+<hr>
+@foreach (Doctor doc in Model)
+{
+  <a href="/doctor/@doc.doctor_id">
+    <h3>
+      @doc.name
+    </h3>
+  </a>
+}
 
-<h1>DoctorOffice home</h1>
+<form action="/doctor/add" method="post">
+  <h5>Add A New Doctor</h5>
+  <label for="name">Name</label><br>
+  <input type="text" id="name" name="name"><br><br>
+  <button type="submit" class="btn btn-info">Add</button>
+</form>
+<br>
+
+  <a href="/patient/add">
+    <h3>
+      Add A New Patient
+    </h3>
+  </a>
+
+    <a href="/specialty/add">
+    <h3>
+      Add A New Specialty
+    </h3>
+  </a>
+  </div>

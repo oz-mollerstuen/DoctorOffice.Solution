@@ -13,7 +13,8 @@ namespace DoctorOffice.Controllers
     
     [HttpGet("/")]
     public ActionResult Index() {
-      return View();
+      List<Doctor> doctors = _db.Doctors.ToList();
+      return View(doctors);
     }
   }
 }

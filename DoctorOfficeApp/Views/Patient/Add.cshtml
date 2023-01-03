@@ -1,0 +1,21 @@
+@{
+    Layout = "_Layout";
+}
+
+@using DoctorOffice.Models
+
+<div class="text-center">
+  <a href="/">
+    <h3>Home</h3>
+  </a>
+  <br>
+  <h1>Add patient</h1>
+<form action="/patient/add" method="post">
+    <label for="name">Name</label><br>
+    <input type="text" id="name" name="name"><br>
+    <label for="birthday">Birthday</label><br>
+    <input type="date" id="birthday" name="birthday"><br><br>
+    <button type="submit" class="btn btn-info">Add</button>
+</form>
+<br>
+</div>

@@ -1,0 +1,19 @@
+@{
+    Layout = "_Layout";
+}
+
+@using DoctorOffice.Models
+
+<div class="text-center">
+  <a href="/">
+    <h3>Home</h3>
+  </a>
+  <br>
+  <h1>Add a special specialty</h1>
+<form action="/specialty/add" method="post">
+    <label for="name">Name</label><br>
+    <input type="text" id="name" name="name"><br>
+    <button type="submit" class="btn btn-info">Add</button>
+</form>
+<br>
+</div>
