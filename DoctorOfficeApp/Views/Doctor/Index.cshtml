@@ -59,7 +59,20 @@
               @pat.name
             </h1>
             <p class="card-text">Birthday: @pat.birthday</p>
+              @if (pat.name.Contains("ho"))
+  {
+    <img class="card-img" src="https://media.giphy.com/media/l2Je9uquleG64bJvy/giphy.gif">
+  }
+              @if (pat.name.Contains("a"))
+  {
+    <img class="card-img" src="https://media.giphy.com/media/xT1R9J0xPzI7RKe9q0/giphy.gif">
+  }
+              @if (pat.name.Contains("jo"))
+  {
+    <img class="card-img" src="https://media.giphy.com/media/Q88oxqTvKBUPK/giphy.gif">
+  }
             <form action="/patient/delete/@pat.patient_id/@Model.doctor_id" method="post">
+              <br>
               <button type="submit" class="btn btn-danger">X</button>
             </form>
           </div>
@@ -77,7 +90,44 @@
         <form action="/specialty/delete/@spec.specialty_id/@Model.doctor_id" method="post">
           <button type="submit" class="btn btn-danger">X</button>
         </form>
+                    @if (spec.name.Contains("bur"))
+  {
+    <img class="card-img" src="https://media.giphy.com/media/xT0BKKNqQB7W2sVQyY/giphy.gif">
+  }
+                    @if (spec.name.Contains("br"))
+  {
+    <img class="card-img" src="https://media.giphy.com/media/Ka1o3q9oaruaZY8zOx/giphy.gif">
+  }
+                    @if (spec.name.Contains("su"))
+  {
+    <img class="card-img" src="https://media.giphy.com/media/QssC4u6deM4iIMF5NS/giphy.gif">
+  }
       </li>
     }
   </ul>
+  @if (Model.name.Contains("bean"))
+  {
+    <img src="https://media.giphy.com/media/9Ai5dIk8xvBm0/giphy.gif">
+  }
+  @if (Model.name.Contains("dr"))
+  {
+    <img src="https://media.giphy.com/media/3o7TKMBLdNJtXxonAY/giphy.gif">
+  }
+  @if (Model.name.Contains("Lucas"))
+  {
+    <img src="https://media.giphy.com/media/uvfEYoOq7HPAA/giphy.gif">
+  }
+  @if (Model.name.Contains("robert"))
+  {
+    <img src="https://media.giphy.com/media/kJbFZ0Zj7mTza/giphy.gif">
+  }
+  @if (Model.name.Contains("bu"))
+  {
+    <img src="https://media.giphy.com/media/vHqYqMzqQYl7wdetsS/giphy.gif">
+  }
+  @if (Model.name.Contains("who"))
+  {
+    <img src="https://media.giphy.com/media/13rmLONp33oWOI/giphy.gif">
+  }
+
 </div>
